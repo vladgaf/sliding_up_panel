@@ -159,6 +159,10 @@ class SlidingUpPanel extends StatefulWidget {
   /// by default the Panel is open and must be swiped closed by the user.
   final PanelState defaultPanelState;
 
+  final double? bodyHeight;
+
+  final double? bodyWidth;
+
   SlidingUpPanel(
       {Key? key,
       this.panel,
@@ -167,6 +171,8 @@ class SlidingUpPanel extends StatefulWidget {
       this.collapsed,
       this.minHeight = 100.0,
       this.maxHeight = 500.0,
+      this.bodyWidth,
+      this.bodyHeight,
       this.snapPoint,
       this.border,
       this.borderRadius,
@@ -264,8 +270,9 @@ class _SlidingUpPanelState extends State<SlidingUpPanel>
                   );
                 },
                 child: Container(
-                  height: MediaQuery.of(context).size.height,
-                  width: MediaQuery.of(context).size.width,
+                  height:
+                      widget.bodyHeight ?? MediaQuery.of(context).size.height,
+                  width: widget.bodyWidth ?? MediaQuery.of(context).size.width,
                   child: widget.body,
                 ),
               )
